@@ -8,32 +8,32 @@ namespace FizzBuzzPolymorph
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             GenerateFizzBuzzOutput(100);
             Console.ReadKey();
         }
 
-        private static void GenerateFizzBuzzOutput(int maxNumberToCaluculate)
+        public static void GenerateFizzBuzzOutput(int maxNumberToCaluculate)
         {
             for (int i = 1; i <= maxNumberToCaluculate; i++)
             {
                 var number = GetNumber(i);
-                Console.WriteLine(number.Output);
+                Console.WriteLine(number.ToString());
             }
         }
 
-        private static Number GetNumber(int i)
-        { 
-            if (i % 3 == 0 && i % 5 == 0)
+        public static Number GetNumber(int i)
+        {
+            if (NumberIsDivisibleByThreeAndFive(i))
             {
                 return new DivisibleByThreeAndFiveNumber();
             }
-            else if (i % 5 == 0)
+            else if (NumberIsDivisibleByFive(i))
             {
                 return new DivisibleByFiveNumber();
             }
-            else if (i % 3 == 0)
+            else if (NumberIsDivisibleByThree(i))
             {
                 return new DivisibleByThreeNumber();
             }
@@ -43,49 +43,52 @@ namespace FizzBuzzPolymorph
             }
         }
 
-        private class Number
+        private static bool NumberIsDivisibleByThreeAndFive(int number)
+        {
+            return number % 3 == 0 && number % 5 == 0;
+        }
+
+        private static bool NumberIsDivisibleByFive(int number)
+        {
+            return number % 5 == 0;
+        }
+
+        public static bool NumberIsDivisibleByThree(int number)
+        {
+            return number % 3 == 0;
+        }
+
+        public class Number
         {
             public int Value { get; set; }
 
-            public virtual string Output
+            public override string ToString()
             {
-                get
-                {
-                    return Value.ToString();
-                }
+                return Value.ToString();
             }
         }
 
-        private class DivisibleByThreeNumber : Number
+        public class DivisibleByThreeNumber : Number
         {
-            public override string Output
-            { 
-                get
-                {
-                    return "Fizz";
-                }
+            public override string ToString()
+            {
+                return "Fizz";
             }
         }
 
-        private class DivisibleByFiveNumber : Number 
+        public class DivisibleByFiveNumber : Number
         {
-            public override string Output
+            public override string ToString()
             {
-                get
-                {
-                    return "Buzz";
-                }
+                return "Buzz";
             }
         }
 
-        private class DivisibleByThreeAndFiveNumber : Number 
+        public class DivisibleByThreeAndFiveNumber : Number
         {
-            public override string Output
+            public override string ToString()
             {
-                get
-                {
                     return "FizzBuzz";
-                }
             }
         }
     }
