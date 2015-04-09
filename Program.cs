@@ -19,7 +19,7 @@ namespace FizzBuzzPolymorph
             for (int i = 1; i <= maxNumberToCaluculate; i++)
             {
                 var number = GetNumber(i);
-                Console.WriteLine(number.ToString());
+                Console.WriteLine(GetNumber(i));
             }
         }
 
@@ -29,23 +29,20 @@ namespace FizzBuzzPolymorph
             {
                 return new DivisibleByThreeAndFiveNumber();
             }
-            else if (NumberIsDivisibleByFive(i))
+            if (NumberIsDivisibleByFive(i))
             {
                 return new DivisibleByFiveNumber();
             }
-            else if (NumberIsDivisibleByThree(i))
+            if (NumberIsDivisibleByThree(i))
             {
                 return new DivisibleByThreeNumber();
             }
-            else
-            {
-                return new Number { Value = i };
-            }
+            return new Number { Value = i };
         }
 
         private static bool NumberIsDivisibleByThreeAndFive(int number)
         {
-            return number % 3 == 0 && number % 5 == 0;
+            return NumberIsDivisibleByThree(number) && NumberIsDivisibleByFive(number);
         }
 
         private static bool NumberIsDivisibleByFive(int number)
@@ -88,7 +85,7 @@ namespace FizzBuzzPolymorph
         {
             public override string ToString()
             {
-                    return "FizzBuzz";
+                return "FizzBuzz";
             }
         }
     }
