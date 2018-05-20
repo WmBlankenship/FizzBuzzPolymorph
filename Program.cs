@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FizzBuzzPolymorph
 {
@@ -18,8 +14,8 @@ namespace FizzBuzzPolymorph
         {
             for (int i = 1; i <= maxNumberToCaluculate; i++)
             {
-                var number = GetNumber(i);
-                Console.WriteLine(GetNumber(i));
+                var output = GetNumber(i);
+                Console.WriteLine(output);
             }
         }
 
