@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FizzBuzzPolymorph.git\FizzBuzzPolymorph.csproj" />
+    <ProjectReference Include="..\FizzBuzzPolymorph.csproj" />
   </ItemGroup>
 
 </Project>
